@@ -2,7 +2,7 @@
 type Category = 'другое' | 'софт-скил' | 'дополнительное' | 'кнопка' | 'хард-скил'
 
 // интерфейс, описываюзий входящие данные товара
-export interface Iitem {
+export interface IProduct {
   // Индификатор товара
   id: string; 
   // Полное описание товара
@@ -37,7 +37,41 @@ export interface IOrderData {
 // Интерфейс, который объединяет данные и также описывает выбранные товары 
 export interface IOrder extends IOrderData, IOrderAdress {
   // Выбранные товары
-  items: Iitem[];
+  items: IProduct[];
+}
+
+// Интерфес, для получения результата заказа
+export interface IOrderResult {
+  id: string;
+}
+
+// Интерфес API 
+export interface ILarekApi {
+  // Получение всех итемов
+  getList: () => Promise<IProduct[]>;
+  // Получение итема по id
+  getItem: (id: string) => Promise<IProduct>;
+  order: (order: IOrder) => Promise<IOrderResult>;
+}
+
+// Интерйфес формы
+export interface IForm {
+  // Значение валидации
+  valid: boolean;
+  // Список ошибок
+  error: string[];
+}
+
+// Интерфес модального окна
+export interface IModal {
+  // Элемент расположения контента в модальном окне
+  content: HTMLElement
+}
+
+// Итерфес формы с успешным заказом
+export interface ISuccess {
+  // Общая сумма товара
+  total: number;
 }
 
 // Интерфес, описывающий главную страницу
@@ -58,17 +92,16 @@ export interface IBasketView {
   total: number;
 }
 
-// Интерфес, для получения результата заказа
-export interface IOrderResult {
-  id: string;
-}
-
-// Интерфес API 
-export interface ILarekApi {
-  // Получение всех итемов
-  getList: () => Promise<Iitem[]>;
-  // Получение итема по id
-  getItem: (id: string) => Promise<Iitem>;
-
-  order: (order: IOrder) => Promise<IOrderResult>;
+// интерфейс, описываюзий входящие данные товара
+export interface ICard {
+  // Полное описание товара
+  description: string;
+  // Картинка товара
+  image: string;
+  // Загаловок товара
+  title: string;
+  // Категория товара
+  category: Category;
+  // цена
+  price: number;
 }
