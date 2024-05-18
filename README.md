@@ -294,5 +294,4 @@ yarn build
 - `card:add` - добавление карточки
 - `card:remote` - удаление карточки
 - `card:select` - выбор карточки
-- `preview:changed` - открытие модалки карточки
 
