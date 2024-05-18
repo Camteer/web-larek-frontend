@@ -14,7 +14,7 @@ export interface IProduct {
   // Категория товара
   category?: Category;
   // цена
-  price: number;
+  price: number | null;
 
 }
 
@@ -92,16 +92,3 @@ export interface IBasketView {
   total: number;
 }
 
-// интерфейс, описываюзий входящие данные товара
-export interface ICard {
-  // Полное описание товара
-  description: string;
-  // Картинка товара
-  image: string;
-  // Загаловок товара
-  title: string;
-  // Категория товара
-  category: Category;
-  // цена
-  price: number;
-}
